@@ -12,6 +12,11 @@ exports.login = function(req, res) {
 		});
 		return;
 	}
+	if (req.body.remember === 'remember') {
+		req.session.remember = true;
+		req.session.email = req.body.email;
+		req.sessionOptions.maxAge = 60000; // milliseconds
+	}
 	res.render('index', {
 		title: 'Login in as ' + req.body.email,
 		isLoggedIn: true
@@ -19,6 +24,7 @@ exports.login = function(req, res) {
 };
 
 exports.logout = function(req, res) {
+	req.session = null;
 	res.render('index', {
 		title: 'See you again later',
 		isLoggedIn: false

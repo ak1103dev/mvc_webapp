@@ -4,6 +4,7 @@ var compression  = require('compression');
 var bodyParser = require('body-parser');
 var sass = require('node-sass-middleware');
 var validator = require('express-validator');
+var cookieSession = require('cookie-session');
 
 module.exports = function () {
 	var app = express();
@@ -14,6 +15,10 @@ module.exports = function () {
 		app.use(compression());
 	}
 
+	app.use(cookieSession({
+		name: 'session',
+		keys: ['secret_key1', 'secret_key2']
+	}));
 	//support application/x-www-form-urlencoded
 	app.use(bodyParser.urlencoded({
 		extended: true // false-> string, array || true-> anything
