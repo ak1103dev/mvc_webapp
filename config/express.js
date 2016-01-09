@@ -20,5 +20,8 @@ module.exports = function () {
 	app.set('view engine', 'jade');
 
 	require('../app/routes/index.routes')(app);
+
+	app.use(express.static('./public'));
+
 	return app;
 };
