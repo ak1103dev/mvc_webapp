@@ -13,6 +13,7 @@
     "morgan": "~1.6.1",
     "compression": "~1.6.0",
     "body-parser": "~1.14.2",
-    "jade": "~1.11.0"
+    "jade": "~1.11.0",
+    "node-sass-middleware": "~0.9.7"
   }
 }

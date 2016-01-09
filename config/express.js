@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var compression  = require('compression');
 var bodyParser = require('body-parser');
+var sass = require('node-sass-middleware');
 
 module.exports = function () {
 	var app = express();
@@ -21,6 +22,13 @@ module.exports = function () {
 
 	require('../app/routes/index.routes')(app);
 
+	app.use(sass({
+		src: './sass',
+		dest: './public/css', // path of css file that is compiled from sass file
+		outputStyle: 'compressed', // compressed, compact, expanded
+		prefix: '/css',
+		indentedSyntax: true
+	}));
 	app.use(express.static('./public'));
 
 	return app;
