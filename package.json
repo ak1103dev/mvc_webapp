@@ -9,6 +9,9 @@
   "author": "ak1103",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "express": "~4.13.3"
+    "express": "~4.13.3",
+    "morgan": "~1.6.1",
+    "compression": "~1.6.0",
+    "body-parser": "~1.14.2"
   }
 }
