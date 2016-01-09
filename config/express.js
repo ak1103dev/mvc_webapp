@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var compression  = require('compression');
 var bodyParser = require('body-parser');
 var sass = require('node-sass-middleware');
+var validator = require('express-validator');
 
 module.exports = function () {
 	var app = express();
@@ -19,6 +20,7 @@ module.exports = function () {
 	}));
 	//support application/json
 	app.use(bodyParser.json());
+	app.use(validator());
 
 	app.set('views', './app/views'); // relative path from server.js
 	app.set('view engine', 'jade');
