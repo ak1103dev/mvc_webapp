@@ -12,15 +12,19 @@ module.exports = function () {
 	else {
 		app.use(compression());
 	}
+
+	//support application/x-www-form-urlencoded
 	app.use(bodyParser.urlencoded({
-		extended: true
+		extended: true // false-> string, array || true-> anything
 	}));
+	//support application/json
 	app.use(bodyParser.json());
 
 	app.set('views', './app/views'); // relative path from server.js
 	app.set('view engine', 'jade');
 
 	require('../app/routes/index.routes')(app);
+	require('../app/routes/user.routes')(app);
 
 	app.use(sass({
 		src: './sass',
